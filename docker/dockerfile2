@@ -1,0 +1,15 @@
+# Use a minimal base image
+FROM ubuntu:20.04
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y bash
+
+# Copy the daemon script into the container
+COPY daemon.sh /usr/local/bin/daemon.sh
+
+# Make the script executable
+RUN chmod +x /usr/local/bin/daemon.sh
+
+# Run the script in the background as a daemon
+CMD ["/usr/local/bin/daemon.sh"]
+
